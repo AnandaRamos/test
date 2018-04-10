@@ -103,8 +103,11 @@ class UsersController extends AppController
                 'associated' => ['Addresses', 'Phones', 'Individuals']
             ]);
 
-            if ($this->Users->save($user)) {
+            if ($this->Users->save($user, [
+                'associated' => ['Addresses', 'Phones', 'Individuals']
+            ])) {
                 $this->Flash->success(__('The new user has been saved.'));
+;
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Unable to add this user.'));
@@ -123,15 +126,11 @@ class UsersController extends AppController
             ->find('all')
             ->where(['Users.id' => $id])
             ->contain(['Individuals', 'Addresses', 'Phones']) // load associated
-            ->firstOrFail();
+            ->first();
 
         if ($this->request->is(['post', 'put'])) {
-            $this->Users->patchEntity($user, $this->request->getData(), [
-                // Added: Disable modification of user's id.
-                'accessibleFields' => ['Users.id' => false],
-                'associated' => ['Addresses', 'Phones', 'Individuals']
-            ]);
-            if ($this->Users->save($user)) {
+            $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user, ['associated' => ['Addresses', 'Phones', 'Individuals']])) {
                 $this->Flash->success(__('The user has been updated.'));
                 return $this->redirect(['action' => 'index']);
             }

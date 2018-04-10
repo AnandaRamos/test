@@ -46,10 +46,7 @@ class UsersTable extends Table
         $this->hasMany('Addresses', [
             'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('Auths', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->hasOne('Individuals', [
+        $this->hasMany('Individuals', [
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Phones', [

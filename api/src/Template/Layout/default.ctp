@@ -16,8 +16,7 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
-<html  data-ng-app="MyApp" id="ng-app">
-
+<html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,8 +42,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <li><?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?></a></li>
-                <li><?= $this->Html->link('Register', ['controller' => 'users', 'action' => 'add']); ?></a></li>
+                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
+                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div>
     </nav>
